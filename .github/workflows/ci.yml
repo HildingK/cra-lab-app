@@ -28,6 +28,6 @@ jobs:
           python -c "import os, sys; print('CWD:', os.getcwd()); print('PYTHONPATH:', sys.path)"
 
       - name: Run tests
-        emv:
+        env:
           PYTHONPATH: ${{ github.workspace }}
         run: pytest -vv
