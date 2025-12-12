@@ -23,6 +23,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest
+      - name: Debug Python path
+        run: |
+          python -c "import os, sys; print('CWD:', os.getcwd()); print('PYTHONPATH:', sys.path)"
 
       - name: Run tests
-        run: pytest
+        emv:
+          PYTHONPATH: ${{ github.workspace }}
+        run: pytest -vv
